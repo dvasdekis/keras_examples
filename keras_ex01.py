@@ -49,16 +49,21 @@ except StandardError:
 # and then start adding layers to it with the .add() method. Each .add() is a new layer in the neural network.
 
 
+# Here's where the magic happens - we decide the hyperparameters here, and it's hard to evaluate them.
 mylog.debug("Add 3 layers to the newly defined model")
 try:
-    # First layer has 12 neurons and, importantly, expects 8 input variables
-    mymodel.add(Dense(12, input_dim=8, activation='relu'))
-    # Second layer has only 8 neurons
+    # First layer has 24 neurons and, importantly, expects 8 input variables
+    mymodel.add(Dense(24, input_dim=8, activation='relu'))
+    # I added a second layer, and it increased accuracy over 500 iterations by 2.5%
+    mymodel.add(Dense(12, activation='relu'))
+    # Third layer has only 8 neurons
     mymodel.add(Dense(8, activation='relu'))
     # Last layer has only 1 neuron - for 1 dependent variable. In this example - does the subject have diabetes or not?
     mymodel.add(Dense(1, activation='sigmoid'))
 except StandardError:
     mylog.critical("Couldn't add layers to my model!")
+
+
 
 # Compile the model, so that we can run it on our current hardware. This needs an explicit step in Keras.
 mylog.debug("Compiling the model")
