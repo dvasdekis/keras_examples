@@ -73,6 +73,8 @@ try:
     # Epochs is the number of iterations that we run the dataset through.
     # Batch_size is the number of "instances that are evaluated before a weight update is performed", whatever
     # that means.
+    # Verbosity is the level of detail about the model's evaluation that's printed to the console. 
+    # A higher number is less detail.
     mymodel.fit(X, Y, epochs=500, batch_size=10,  verbose=1)
     # mymodel.fit(X, Y, epochs=500, batch_size=10,  verbose=2)
 except StandardError:
